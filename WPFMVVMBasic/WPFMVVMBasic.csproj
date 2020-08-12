@@ -55,11 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ListItem\AListItem.xaml.cs">
+      <DependentUpon>AListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListItem\AListItemViewModel.cs" />
     <Compile Include="Utilities\BaseViewModel.cs" />
     <Compile Include="Utilities\Command.cs" />
     <Compile Include="Utilities\CommandParam.cs" />
     <Compile Include="ViewModels\AddableListViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Page Include="ListItem\AListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

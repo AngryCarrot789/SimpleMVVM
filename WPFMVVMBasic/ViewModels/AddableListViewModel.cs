@@ -6,23 +6,35 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WPFMVVMBasic.ListItem;
 using WPFMVVMBasic.Utilities;
 
 namespace WPFMVVMBasic.ViewModels
 {
     public class AddableListViewModel : BaseViewModel
     {
-        public ObservableCollection<string> Items { get; set; }
+        /// <summary>
+        /// The bindable collection of items
+        /// </summary>
+        public ObservableCollection<AListItemViewModel> Items { get; set; }
 
         private string _inputText;
+
+        /// <summary>
+        /// The text in the textbox
+        /// </summary>
         public string InputText
         {
             get => _inputText;
             set => RaisePropertyChanged(ref _inputText, value);
         }
 
-        private string _selectedItem;
-        public string SelectedItem
+        private AListItemViewModel _selectedItem;
+
+        /// <summary>
+        /// The selected listboxitem.
+        /// </summary>
+        public AListItemViewModel SelectedItem
         {
             get => _selectedItem;
             set => RaisePropertyChanged(ref _selectedItem, value);
@@ -33,24 +45,29 @@ namespace WPFMVVMBasic.ViewModels
 
         public AddableListViewModel()
         {
-            Items = new ObservableCollection<string>();
+            Items = new ObservableCollection<AListItemViewModel>();
 
             AddInputToListCommand = new Command(AddInputToList);
             ClearListCommand = new Command(ClearList);
         }
 
-        public void AddInputToList()
+        public AListItemViewModel CreateItem(string text)
         {
-            AddToList(InputText);
+            return new AListItemViewModel() { Text = text };
         }
 
-        public void AddToList(string item)
+        public void AddInputToList()
         {
-            if (!string.IsNullOrEmpty(item))
+            AddToList(CreateItem(InputText));
+        }
+
+        public void AddToList(AListItemViewModel item)
+        {
+            if (!string.IsNullOrEmpty(item.Text))
                 Items.Add(item);
         }
 
-        public void RemoveFromList(string item)
+        public void RemoveFromList(AListItemViewModel item)
         {
             Items.Remove(item);
         }

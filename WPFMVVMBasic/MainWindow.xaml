@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFMVVMBasic"
+        xmlns:local="clr-namespace:WPFMVVMBasic" xmlns:listitem="clr-namespace:WPFMVVMBasic.ListItem"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="480">
     <Grid Margin="4">
@@ -17,7 +17,18 @@
                          HorizontalAlignment="Stretch"
                          Margin="0,0,0,57"
                          ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}"
-                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"/>
+                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
+                    <!-- Make the listbox's item template (aka what the item will look like) -->
+                    <!-- as a new datatemplate (aka a template/control thing) which will be the AListItem -->
+                    <!-- the {Binding} bit right now is an object; an AListItemViewModel. so you can bind -->
+                    <!-- the AListItem's datacontext to it using {Binding}. if you wanted to bind to the inside -->
+                    <!-- of the AListItemViewModel, e.g, another object called AViewModel, do {Binding AViewModel} -->
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <listitem:AListItem DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
                 <TextBox VerticalAlignment="Bottom"
                          HorizontalAlignment="Stretch"
                          VerticalContentAlignment="Center"
@@ -44,7 +55,18 @@
                          HorizontalAlignment="Stretch"
                          Margin="0,0,0,57"
                          ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}"
-                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"/>
+                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
+                    <!-- Make the listbox's item template (aka what the item will look like) -->
+                    <!-- as a new datatemplate (aka a template/control thing) which will be the AListItem -->
+                    <!-- the {Binding} bit right now is an object; an AListItemViewModel. so you can bind -->
+                    <!-- the AListItem's datacontext to it using {Binding}. if you wanted to bind to the inside -->
+                    <!-- of the AListItemViewModel, e.g, another object called AViewModel, do {Binding AViewModel} -->
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <listitem:AListItem DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
                 <TextBox VerticalAlignment="Bottom"
                          HorizontalAlignment="Stretch"
                          VerticalContentAlignment="Center"
