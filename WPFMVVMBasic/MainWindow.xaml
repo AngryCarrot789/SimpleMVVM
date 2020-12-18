@@ -22,7 +22,7 @@
                     <!-- as a new datatemplate (aka a template/control thing) which will be the AListItem -->
                     <!-- the {Binding} bit right now is an object; an AListItemViewModel. so you can bind -->
                     <!-- the AListItem's datacontext to it using {Binding}. if you wanted to bind to the inside -->
-                    <!-- of the AListItemViewModel, e.g, another object called AViewModel, do {Binding AViewModel} -->
+                    <!-- of the AListItemViewModel, e.g, another object called AViewModel, do {Binding Path=SomeFieldHereInsideAListItemViewModel} -->
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <listitem:AListItem DataContext="{Binding}"/>
